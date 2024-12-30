@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perhitungan Sederhana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e293b;
+            color: #e2e8f0;
+        }
+
+        header {
+            background: #48e928;
+            color: #2eaac9;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        main {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .calculator {
+            background: #334155;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+            padding: 2rem;
+            width: 300px;
+        }
+
+        .calculator input {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #01070f;
+            border-radius: 4px;
+            background-color: #fbf7fc;
+            color: #1c6bd1;
+        }
+
+        .calculator button {
+            background: #139494;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .calculator button:hover {
+            background: #1d4ed8;
+        }
+
+        .result {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kalkulator Sederhana</h1>
+    </header>
+
+    <main>
+        <div class="calculator">
+            <h2>Masukkan Angka</h2>
+            <input type="number" id="number1" placeholder="Angka pertama">
+            <input type="number" id="number2" placeholder="Angka kedua">
+            <button onclick="calculate('add')">Tambah</button>
+            <button onclick="calculate('subtract')">Kurang</button>
+            <button onclick="calculate('multiply')">Kali</button>
+            <button onclick="calculate('divide')">Bagi</button>
+            <div class="result" id="result">Hasil: -</div>
+        </div>
+    </main>
+
+    <script>
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById('number1').value);
+            const num2 = parseFloat(document.getElementById('number2').value);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                alert('Harap masukkan angka yang valid!');
+                return;
+            }
+
+            let result;
+            switch (operation) {
+                case 'add':
+                    result = num1 + num2;
+                    break;
+                case 'subtract':
+                    result = num1 - num2;
+                    break;
+                case 'multiply':
+                    result = num1 * num2;
+                    break;
+                case 'divide':
+                    if (num2 === 0) {
+                        alert('Pembagian dengan nol tidak diperbolehkan!');
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+                default:
+                    alert('Operasi tidak dikenal!');
+                    return;
+            }
+
+            document.getElementById('result').textContent = 'Hasil: ' + result;
+        }
+    </script>
+</body>
+</html>
