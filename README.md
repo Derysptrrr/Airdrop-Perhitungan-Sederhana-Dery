@@ -1,0 +1,1 @@
+# Airdrop-Perhitungan-Sederhana-Dery
